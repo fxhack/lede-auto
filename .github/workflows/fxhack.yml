@@ -75,13 +75,7 @@ jobs:
     #  working-directory: ./openwrt
     #  run: |
     #    git clone https://github.com/xiaorouji/openwrt-package.git package/lienol
-    #    git clone "your_github_link" package/"your_folder_name"      
-    
-    - name: 添加包里面没有的应用
-      working-directory: ./openwrt/package/lean
-      run: |
-        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
-    
+    #    git clone "your_github_link" package/"your_folder_name"          
     - name: 配置定制
       env:
         CONFIG_FILE: 'x86_64.config'
