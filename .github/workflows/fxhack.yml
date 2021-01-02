@@ -1,5 +1,5 @@
 
-name: openwrt_x86_64
+name: fxhack
 
 #手动从Actions启动
 on:
