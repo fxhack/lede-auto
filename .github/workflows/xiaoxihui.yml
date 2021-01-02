@@ -1,6 +1,7 @@
 
-name: xiaoxihui_x86_64
+name: openwrt_x86_64
 
+#手动从Actions启动
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -60,7 +61,7 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
-    #更新官方及第三方源
+ 
     - name: 更新官方及第三方源
       working-directory: ./openwrt
       run: |
@@ -74,12 +75,12 @@ jobs:
     #    git clone https://github.com/xiaorouji/openwrt-package.git package/lienol
     #    git clone "your_github_link" package/"your_folder_name"      
     
-    - name: 添加京东签到
+    - name: 额外添加应用
       working-directory: ./openwrt/package/lean
       run: |
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
     
-    - name: .config-配置定制
+    - name: 配置定制
       env:
         CONFIG_FILE: 'xiaoxihui.config'
       run: |
@@ -94,8 +95,7 @@ jobs:
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-    #开始编译
-    - name: 编译固件
+    - name: 开始编译固件
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
