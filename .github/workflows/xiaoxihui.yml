@@ -1,5 +1,5 @@
 
-name: Build_x86_64
+name: xiaoxihui_x86_64
 
 on: 
   release:
@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
+    - name: 校验
       uses: actions/checkout@master
 
-    - name: Initialization environment
+    - name: 下载编译所需插件
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -52,7 +52,7 @@ jobs:
         sudo -E apt-get clean
     
     #下载LEDE源代码
-    - name: Clone source code
+    - name: 下载源代码
       env: 
         REPO_URL: https://github.com/coolsnowwolf/lede
         REPO_BRANCH: master
@@ -61,7 +61,7 @@ jobs:
         cd openwrt
         sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
     #更新官方及第三方源
-    - name: Update & Install feeds
+    - name: 更新官方及第三方源
       working-directory: ./openwrt
       run: |
         ./scripts/feeds update -a
@@ -74,12 +74,13 @@ jobs:
     #    git clone https://github.com/xiaorouji/openwrt-package.git package/lienol
     #    git clone "your_github_link" package/"your_folder_name"      
     
-    #单独添加京东签到软件包开始
+    - name: 添加京东签到
+      working-directory: ./openwrt
       run: |
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean
     #京东签到结束
     
-    - name: Configuration Customization - Build_x86_64
+    - name: .config-配置定制
       env:
         CONFIG_FILE: 'xiaoxihui.config'
       run: |
@@ -87,21 +88,20 @@ jobs:
         chmod +x ./customize.sh && ./customize.sh
         cd openwrt && make defconfig
         
-    - name: Download package
+    - name: 下载配置文件源码
       working-directory: ./openwrt
-      #下载源码
       run: |
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
     #开始编译
-    - name: Build firmware
+    - name: 编译固件
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
 
-    - name : Upload artifact
+    - name : 上传文件
       uses: actions/upload-artifact@master
       with:
         name: OpenWrt
