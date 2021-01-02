@@ -85,7 +85,7 @@ jobs:
         CONFIG_FILE: 'fxhack.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x ./customize.sh && ./customize.sh
+        chmod +x ./自定义脚本.sh && ./自定义脚本.sh
         cd openwrt && make defconfig
         
     
