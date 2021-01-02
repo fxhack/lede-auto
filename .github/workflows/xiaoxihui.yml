@@ -80,7 +80,6 @@ jobs:
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
     
     - name: .config-配置定制
-      working-directory: ./openwrt
       env:
         CONFIG_FILE: 'xiaoxihui.config'
       run: |
