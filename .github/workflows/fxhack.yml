@@ -59,7 +59,9 @@ jobs:
         REPO_BRANCH: master
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        #进入openwrt目录
         cd openwrt
+        #去掉目录下feeds.conf.default里面src-git helloworld前面的#
         sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
  
     - name: 更新官方及第三方源
@@ -75,7 +77,7 @@ jobs:
     #    git clone https://github.com/xiaorouji/openwrt-package.git package/lienol
     #    git clone "your_github_link" package/"your_folder_name"      
     
-    - name: 额外添加应用
+    - name: 添加包里面没有的应用
       working-directory: ./openwrt/package/lean
       run: |
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
