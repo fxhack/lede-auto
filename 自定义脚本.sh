@@ -1,3 +1,5 @@
+sed -i '1i CONFIG_KERNEL_BUILD_USER="fxhack"' openwrt/.config
+sed -i '1i CONFIG_GRUB_TITLE="OpenWrt by fxhack"' openwrt/.config
 #将config_generate文件内的192.168.1.1替换为10.0.0.253
 sed -i 's/192.168.1.1/10.0.0.253/g' openwrt/package/base-files/files/bin/config_generate
 #添加京东签到插件
