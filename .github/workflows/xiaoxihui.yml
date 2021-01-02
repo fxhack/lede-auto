@@ -75,12 +75,12 @@ jobs:
     #    git clone "your_github_link" package/"your_folder_name"      
     
     - name: 添加京东签到
-      working-directory: ./openwrt
+      working-directory: ./openwrt/package/lean
       run: |
-        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean
-    #京东签到结束
+        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
     
     - name: .config-配置定制
+      working-directory: ./openwrt
       env:
         CONFIG_FILE: 'xiaoxihui.config'
       run: |
@@ -88,6 +88,7 @@ jobs:
         chmod +x ./customize.sh && ./customize.sh
         cd openwrt && make defconfig
         
+    
     - name: 下载配置文件源码
       working-directory: ./openwrt
       run: |
