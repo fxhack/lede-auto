@@ -2,9 +2,18 @@
 name: Openwrt自动编译
 
 #手动从Actions启动
+#github.event.inputs.config
 on:
   repository_dispatch:
   workflow_dispatch:
+    inputs:
+      config:
+        description: '输入要编译的配置文件名称'
+        required: false
+        default: 'x86_64.config'
+env:
+  F_CONFIG:github.event.inputs.config
+  
 #改动后自动编译
   #push:
   #  branches: 
@@ -77,10 +86,10 @@ jobs:
     #    git clone https://github.com/xiaorouji/openwrt-package.git package/lienol
     #    git clone "your_github_link" package/"your_folder_name"          
     - name: 配置定制
-      env:
-        CONFIG_FILE: 'x86_64.config'
+      #env:
+        #CONFIG_FILE: 'x86_64.config'
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        [ -e $F_CONFIG ] && mv $F_CONFIG openwrt/.config
         chmod +x ./自定义脚本.sh && ./自定义脚本.sh
         cd openwrt && make defconfig
         
