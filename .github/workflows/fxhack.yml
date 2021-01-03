@@ -105,4 +105,5 @@ jobs:
       with:
         #name: OpenWrt
         name: $CONFIG_FILE
-        path: openwrt/bin
+        #path: openwrt/bin
+        path: openwrt/bin/targets/*/*/*.img
