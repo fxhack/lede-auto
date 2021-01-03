@@ -12,7 +12,7 @@ on:
         required: true
         default: 'x86_64.config'
 env:
-  CONFIG_FILE:github.event.inputs.config
+  CONFIG_FILE:$github.event.inputs.config
   
 #改动后自动编译
   #push:
