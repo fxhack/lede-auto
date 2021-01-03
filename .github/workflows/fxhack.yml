@@ -1,4 +1,4 @@
-name: Openwrt自动编译
+name: ${{ github.event.inputs.config }}
 
 #手动从Actions启动
 #github.event.inputs.config
