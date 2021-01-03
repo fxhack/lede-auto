@@ -9,7 +9,7 @@ on:
       config:
         description: '请输入配置文件名称'
         required: false
-        default: 'x86_64.config'
+        default: 'x86_64'
 #改动后自动编译
   #push:
   #  branches: 
@@ -82,7 +82,7 @@ jobs:
     - name: 配置定制
       env:
         #CONFIG_FILE: 'x86_64.config'
-        CONFIG_FILE: ${{ github.event.inputs.config }}
+        CONFIG_FILE: "${{ github.event.inputs.config }}.config"
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./自定义脚本.sh && ./自定义脚本.sh
@@ -104,5 +104,6 @@ jobs:
     - name : 上传文件
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt
+        #name: OpenWrt
+        name: $CONFIG_FILE
         path: openwrt/bin
