@@ -25,13 +25,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: 校验
+    - name: Checkout
       uses: actions/checkout@master
     - name: 下载编译所需插件
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        echo "开始编译文件 ${{ github.event.inputs.config }}"
         docker rmi `docker images -q`
         echo "Deleting files, please wait ..."
         sudo rm -rf \
