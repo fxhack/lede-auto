@@ -1,4 +1,3 @@
-
 name: Openwrt自动编译
 
 #手动从Actions启动
@@ -11,7 +10,7 @@ on:
         description: '请输入配置文件名称'
         required: false
         default: 'x86_64.config'
-echo "Hello ${{ github.event.inputs.config }}!"
+#echo "Hello ${{ github.event.inputs.config }}!"
 #改动后自动编译
   #push:
   #  branches: 
