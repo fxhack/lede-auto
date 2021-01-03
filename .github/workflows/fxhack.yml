@@ -31,8 +31,8 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        echo "开始编译文件 ${{ github.event.inputs.config }}!"
-        CONFIG_FILE:$github.event.inputs.config
+        echo "开始编译文件 ${{ github.event.inputs.config }}"
+        CONFIG_FILE:${{ github.event.inputs.config }}
         docker rmi `docker images -q`
         echo "Deleting files, please wait ..."
         sudo rm -rf \
