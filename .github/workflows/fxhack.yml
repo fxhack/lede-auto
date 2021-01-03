@@ -1,7 +1,5 @@
 name: Openwrt全自动编译
 
-#手动从Actions启动
-#github.event.inputs.config
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -9,17 +7,7 @@ on:
       config:
         description: '请输入配置文件名称'
         required: false
-        default: 'x86_64'
-#改动后自动编译
-  #push:
-  #  branches: 
-  #    - master
-#定时编译
-  #schedule:
-  #  - cron: 0 8 * * 5
-#点击Star编译  
-  #watch:
-  #  types: [started]
+        default: 'x86_64.config'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -81,7 +69,7 @@ jobs:
     - name: 配置定制
       env:
         #CONFIG_FILE: 'x86_64.config'
-        CONFIG_FILE: "${{ github.event.inputs.config }}.config"
+        CONFIG_FILE: "${{ github.event.inputs.config }}"
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./自定义脚本.sh && ./自定义脚本.sh
