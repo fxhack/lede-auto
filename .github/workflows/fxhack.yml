@@ -20,8 +20,8 @@ on:
 #点击Star编译  
   #watch:
   #  types: [started]
-name: Openwrt全自动编译
-jobs:${{ github.event.inputs.config }}
+name: ${{ github.event.inputs.config }}
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
