@@ -6,8 +6,12 @@ name: Openwrt自动编译
 on:
   repository_dispatch:
   workflow_dispatch:
-
-
+    inputs:
+      config:
+        description: '请输入配置文件名称'
+        required: false
+        default: 'x86_64.config'
+echo "Hello ${{ github.event.inputs.name }}!"
 #改动后自动编译
   #push:
   #  branches: 
