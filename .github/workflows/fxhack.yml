@@ -9,10 +9,10 @@ on:
     inputs:
       config:
         description: '输入要编译的配置文件名称'
-        required: false
+        required: true
         default: 'x86_64.config'
 env:
-  F_CONFIG:github.event.inputs.config
+  CONFIG_FILE:github.event.inputs.config
   
 #改动后自动编译
   #push:
@@ -89,7 +89,7 @@ jobs:
       #env:
         #CONFIG_FILE: 'x86_64.config'
       run: |
-        [ -e $F_CONFIG ] && mv $F_CONFIG openwrt/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./自定义脚本.sh && ./自定义脚本.sh
         cd openwrt && make defconfig
         
