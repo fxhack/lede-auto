@@ -105,5 +105,5 @@ jobs:
       with:
         #name: OpenWrt
         name: ${{ github.event.inputs.config }}
-        #path: openwrt/bin
-        path: openwrt/bin/targets/*/*/*combined.img
+        path: openwrt/bin
+        #path: openwrt/bin/targets/*/*/*combined.img
