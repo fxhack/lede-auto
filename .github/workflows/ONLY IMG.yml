@@ -5,7 +5,7 @@ on:
     inputs:
       config:
         description: '请输入配置文件名称'
-        required: false
+        required: true
         default: 'x86_64.config'
       script:
         description: '是否使用自定义脚本'
