@@ -1,4 +1,4 @@
-name: 调度
+name: 代码调试
 on:
   repository_dispatch:
   workflow_dispatch:
