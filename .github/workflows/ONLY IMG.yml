@@ -49,8 +49,8 @@ jobs:
         SCRIPT_FILE: "${{ github.event.inputs.script }}"
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        if $SCRIPT_FILE = "yes":
-          chmod +x ./diy.sh && ./diy.sh
+        #if $SCRIPT_FILE = "yes":
+        chmod +x ./diy.sh && ./diy.sh
         cd openwrt && make defconfig
     - name: 下载配置文件源码
       working-directory: ./openwrt
