@@ -2,5 +2,6 @@
 
 2、在本地编译环境下使用下面命令导出配置文件，复制后放入新建的自定义.config文件
 
-./scripts/diffconfig.sh > filename
-cat filename
+./scripts/diffconfig.sh > diffconfig
+
+cat diffconfig
