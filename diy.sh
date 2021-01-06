@@ -8,5 +8,4 @@ sed -i '3i CONFIG_PACKAGE_luci-app-smartdns=y' openwrt/.config
 cd ./openwrt/package/lean
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 git clone https://github.com/destan19/OpenAppFilter.git
-git clone https://github.com/fxhack/packages_openwrt/tree/packages/luci-app-smartdns
-git clone https://github.com/fxhack/packages_openwrt/tree/packages/smartdns
+git clone https://github.com/fxhack/packages_openwrt.git
