@@ -1,4 +1,4 @@
-name: openwrt
+name: lede
 on:
   repository_dispatch:
   workflow_dispatch:
