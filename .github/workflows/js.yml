@@ -13,18 +13,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: 下载编译所需插件
-      env:
-        DEBIAN_FRONTEND: noninteractive
+    - name: 下载安装编译所需套件
       run: |
         sudo apt-get update
         sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
         git clone https://github.com/coolsnowwolf/lede
         cd lede
         ./scripts/feeds update -a
-        ./scripts/feeds install -a
-        ./scripts/feeds install -a        
-    - name: 配置定制
+        ./scripts/feeds install -a   
+    - name: 配置定制过程
       env:
         CONFIG_FILE: "${{ github.event.inputs.config }}"
       run: |
@@ -38,7 +35,7 @@ jobs:
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
         echo -e "done!"
-    - name : 上传文件
+    - name : 上传固件
       uses: actions/upload-artifact@master
       with:
         name: lede
