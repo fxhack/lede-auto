@@ -1,4 +1,4 @@
-sed -i 's/192.168.1.1/10.0.0.5/g' openwrt/package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.5.1/g' openwrt/package/base-files/files/bin/config_generate
 #add applications
 #sed -i '3i CONFIG_PACKAGE_luci-app-jd-dailybonus=y' openwrt/.config
 sed -i '3i CONFIG_PACKAGE_luci-app-oaf=y' openwrt/.config
