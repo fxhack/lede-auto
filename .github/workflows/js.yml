@@ -19,7 +19,7 @@ jobs:
         sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
         git clone https://github.com/coolsnowwolf/lede openwrt
         cd openwrt
-        sed -i '1i src-git liuran001_packages https://github.com/fxhack/packages_openwrt' ./feeds.conf.default
+        sed -i '1i src-git liuran001_packages https://github.com/liuran001/openwrt-packages' ./feeds.conf.default
     - name: 配置定制过程
       env:
         CONFIG_FILE: "${{ github.event.inputs.config }}"
