@@ -1,4 +1,4 @@
-name: lede
+name: diy
 on:
   repository_dispatch:
   workflow_dispatch:
