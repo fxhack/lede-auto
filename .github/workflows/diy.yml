@@ -6,7 +6,7 @@ on:
       config:
         description: '请输入配置文件名称'
         required: true
-        default: 'x86_64.config'
+        default: 'xiaomi-mini-print.config'
 jobs:
   build:
     runs-on: ubuntu-18.04
