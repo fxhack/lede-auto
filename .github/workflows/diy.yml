@@ -24,7 +24,7 @@ jobs:
       env:
         CONFIG_FILE: "${{ github.event.inputs.config }}"
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE lede/.config
         chmod +x ./diy.sh && ./diy.sh
     - name: 开始编译固件
       working-directory: ./lede
