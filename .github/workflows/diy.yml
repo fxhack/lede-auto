@@ -9,7 +9,7 @@ on:
         default: 'xiaomi-mini-print.config'
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: 环境检查
       uses: actions/checkout@master
