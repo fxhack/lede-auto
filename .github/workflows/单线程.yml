@@ -1,4 +1,4 @@
-name: diy
+name: 单线程
 on:
   repository_dispatch:
   workflow_dispatch:
